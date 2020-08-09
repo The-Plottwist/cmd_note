@@ -7,8 +7,8 @@ SETLOCAL EnableDelayedExpansion
 REM Title
 TITLE Cmd_Note
 
-REM Utf-8
-REM CHCP 65001>nul
+REM Utf-8 IF You are using win7 or older comment(REM) this line
+CHCP 65001>nul
 
 REM Change Directory
 CD C:\ProgramData
