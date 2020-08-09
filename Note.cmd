@@ -11,7 +11,7 @@ REM Utf-8 IF You are using win7 or older comment(REM) this line
 CHCP 65001>nul
 
 REM Change Directory
-CD C:\ProgramData
+CD C:\Users\%USERNAME%\Documents
 
 REM Check Notes folder
 IF NOT EXIST Cmd_Note\ ( MKDIR Cmd_Note )
