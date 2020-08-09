@@ -83,7 +83,7 @@ IF !ERRORLEVEL! EQU 1 (
 
 :THE_QUESTION
 REM Ask the user to read, write or change a note
-CHOICE /C RWCE /N /M "Do you want to read, write or change a note? E:EXIT (R/W/C/E)"
+CHOICE /C RWCE /N /M "Do you want to read(R), write(W) or change(C) a note? E:EXIT (R/W/C/E)"
 ECHO:
 IF !ERRORLEVEL! EQU 4 (EXIT)
 IF !ERRORLEVEL! EQU 2 (GOTO:SUB_2) ELSE (
