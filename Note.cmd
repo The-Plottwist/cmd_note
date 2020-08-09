@@ -119,7 +119,7 @@ GOTO:!_theanswer!
 
 :SUB_1
 REM Writing file contents to the screen
-REM AdanaYozgatUrfa -> :~0,5 = Adana, :~5 = YozgatUrfa, :~0,-4 =Urfa
+REM Intermilan -> :~0,5 = Inter, :~5 = milan, :~0,-5 = milan
 CLS
 FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 	
