@@ -193,6 +193,8 @@ ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
 ECHO:
 
+ECHO You can delete these lines. >> !_newnote!.xm
+ECHO: >> !_newnote!.xm
 ECHO You can use #slash command for >> !_newnote!.xm
 ECHO //////... >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
