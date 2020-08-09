@@ -73,7 +73,7 @@ IF !ERRORLEVEL! EQU 1 (
 	ECHO #line command for
 	ECHO ______...
 	ECHO:
-	ECHO and #endl command for new line
+	ECHO and #newline command for new line
 	ECHO:
 	ECHO Note: Commands must be aligned to the left side!
 	ECHO:
@@ -153,7 +153,7 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 	
 	REM New line function
 	SET "_command=!_text:~0,5!"
-	IF !_command! == #endl (
+	IF !_command! == #newline (
 		
 		SET "_text=#!_text:~5!"
 		ECHO:
@@ -188,7 +188,7 @@ ECHO:
 ECHO #line command for
 ECHO ______...
 ECHO:
-ECHO and #endl command for new line
+ECHO and #newline command for new line
 ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
 ECHO:
@@ -199,7 +199,7 @@ ECHO: >> !_newnote!.xm
 ECHO #line command for >> !_newnote!.xm
 ECHO ______... >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
-ECHO and #endl command for new line >> !_newnote!.xm
+ECHO and #newline command for new line >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side. >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
@@ -219,7 +219,7 @@ ECHO:
 ECHO #line command for
 ECHO ______...
 ECHO:
-ECHO and #endl command for new line
+ECHO and #newline command for new line
 ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
 ECHO:
