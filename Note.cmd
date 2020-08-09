@@ -152,7 +152,7 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 	)
 	
 	REM New line function
-	SET "_command=!_text:~0,5!"
+	SET "_command=!_text:~0,8!"
 	IF !_command! == #newline (
 		
 		SET "_text=#!_text:~5!"
