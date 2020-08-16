@@ -1,14 +1,15 @@
 # What is it:
-A notepad which works in windows cmd/powershell.
+
+A text interpreter for windows command line ***cmd/powershell***.
 
 # Why did you made such a thing:
+
 I had free time and was looking for a project then this happened. ;)
 
 # Usage:
+
 It's pretty straightforward. Just run the program.
 
 # Bugs:
-It's been a long time since i made this. If it has bugs let me know.   
-   
-Note: If you're using win7 or older comment the Utf-8 line.   
-These versions of windows does not support Utf-8. 
+
+Until recently Windows 10 (which was the only one btw.) was supporting Utf-8 command ```CHCP 65001```. <u>But now it makes the program crash.</u>
