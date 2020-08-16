@@ -7,11 +7,11 @@ SETLOCAL EnableDelayedExpansion
 REM Title
 TITLE Cmd_Note
 
-REM Utf-8 IF You are using win7 or older comment(REM) this line
-CHCP 65001>nul
+REM Utf-8 (CAUTİON MAKES CRASH!)
+REM CHCP 65001>nul
 
 REM Change Directory
-CD C:\Users\%USERNAME%\Documents
+CD C:\Users\%USERNAME&\Cmd_Note
 
 REM Check Notes folder
 IF NOT EXIST Cmd_Note\ ( MKDIR Cmd_Note )
@@ -22,10 +22,10 @@ CD Cmd_Note
 REM Getting Column number for maximum lenght
 SET /A "_line=0"
 FOR /F "tokens=* USEBACKQ" %%F IN (`MODE CON`)DO (
-	
+
 	SET /A "_line+=1"
 	IF !_line! EQU 4 (
-	
+
 		SET "_rawcolumn=%%F"
 		SET /A "_column=!_rawcolumn:~16!"
 	)
@@ -63,7 +63,7 @@ IF !ERRORLEVEL! EQU 1 (
 	ECHO Please enter the file name:
 	SET /P "_file_name="
 	ECHO >> !_file_name!.xm
-	
+
 	CLS
 	ECHO Please enter your notes.
 	ECHO:
@@ -73,7 +73,7 @@ IF !ERRORLEVEL! EQU 1 (
 	ECHO #line command for
 	ECHO ______...
 	ECHO:
-	ECHO and #newline command for new line
+	ECHO and #endl command for new line
 	ECHO:
 	ECHO Note: Commands must be aligned to the left side!
 	ECHO:
@@ -83,11 +83,11 @@ IF !ERRORLEVEL! EQU 1 (
 
 :THE_QUESTION
 REM Ask the user to read, write or change a note
-CHOICE /C RWCE /N /M "Do you want to read(R), write(W) or change(C) a note? E:EXIT (R/W/C/E)"
+CHOICE /C RWCE /N /M "Do you want to read, write or change a note? E:EXIT (R/W/C/E)"
 ECHO:
 IF !ERRORLEVEL! EQU 4 (EXIT)
 IF !ERRORLEVEL! EQU 2 (GOTO:SUB_2) ELSE (
-	
+
 	SET "_theanswer=SUB_!ERRORLEVEL!"
 )
 
@@ -100,7 +100,7 @@ FOR /F "tokens=* USEBACKQ" %%T IN (`DIR ^| FINDSTR /C:".xm"`)DO (
 
 	SET /A "_index+=1"
 	IF !_index! EQU !_line! (
-		
+
 		SET "_text=%%T"
 		SET "_current_file=!_text:~36!"
 	)
@@ -119,46 +119,46 @@ GOTO:!_theanswer!
 
 :SUB_1
 REM Writing file contents to the screen
-REM Intermilan -> :~0,5 = Inter, :~5 = milan, :~0,-5 = milan
+REM Intermilan -> :~0,5 = Inter, :~5 = milan, :~0,-4 = milan
 CLS
 FOR /F "delims=↨" %%G IN (!_current_file!) DO (
-	
+
 	SET "_text=%%G"
-	
+
 	REM Slash function 
 	SET "_command=!_text:~0,6!"
 
 	IF !_command! == #slash (
-		
+
 		FOR /L %%C IN (1, 1, !_column!) DO (
-		
+
 			<nul (SET /P "_any_variable= /")
 		)
 
 		SET "_text=#!_text:~6!"
 	)
-	
+
 	REM Line function
 	SET "_command=!_text:~0,5!"
 
 	IF !_command! == #line (
 
 		FOR /L %%C IN (1, 1, !_column!) DO (
-		
+
 			<nul (SET /P "_any_variable= _")
 		)
 
 		SET "_text=#!_text:~5!"
 	)
-	
+
 	REM New line function
-	SET "_command=!_text:~0,8!"
-	IF !_command! == #newline (
-		
+	SET "_command=!_text:~0,5!"
+	IF !_command! == #endl (
+
 		SET "_text=#!_text:~5!"
 		ECHO:
 	)
-	
+
 	REM Writing file contents
 	IF !_text! NEQ # (ECHO !_text!)
 )
@@ -174,7 +174,7 @@ SET /P "_newnote="
 REM Name check
 SET "_namecheck=!_newnote:~0!"
 IF !_namecheck! EQU ~0 (
-	
+
 	ECHO Wrong name
 	GOTO:SUB_2
 )
@@ -188,20 +188,18 @@ ECHO:
 ECHO #line command for
 ECHO ______...
 ECHO:
-ECHO and #newline command for new line
+ECHO and #endl command for new line
 ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
 ECHO:
 
-ECHO You can delete these lines. >> !_newnote!.xm
-ECHO: >> !_newnote!.xm
 ECHO You can use #slash command for >> !_newnote!.xm
 ECHO //////... >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
 ECHO #line command for >> !_newnote!.xm
 ECHO ______... >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
-ECHO and #newline command for new line >> !_newnote!.xm
+ECHO and #endl command for new line >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side. >> !_newnote!.xm
 ECHO: >> !_newnote!.xm
@@ -221,7 +219,7 @@ ECHO:
 ECHO #line command for
 ECHO ______...
 ECHO:
-ECHO and #newline command for new line
+ECHO and #endl command for new line
 ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
 ECHO:
@@ -229,4 +227,4 @@ ECHO:
 NOTEPAD !_current_file!
 PAUSE
 CLS
-GOTO:LISTING
+GOTO:LISTING 
