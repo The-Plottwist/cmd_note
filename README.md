@@ -20,11 +20,11 @@ A text interpreter for windows command line ***cmd/powershell***.
 
 - #line
 
-<img title="" src="line.gif" alt="" width="516">
+<img title="" src="line.gif" alt="" width="521">
 
 - #slash
 
-<img src="slash.gif" title="" alt="" width="518">
+<img src="slash.gif" title="" alt="" width="521">
 
 - #endl
 
