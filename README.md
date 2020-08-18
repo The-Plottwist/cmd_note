@@ -2,36 +2,66 @@
 
 A text interpreter for windows command line ***cmd/powershell***.
 
-<img title="" src="general.gif" alt="" width="521">
+<img src="file:///home/fatih/Downloads/Showcase.gif" title="" alt="" width="971">
 
-# Usage
 
-#### Four options for file operation:
 
-- Read
+# USAGE
 
-- Write
+#### There are four options for file operation:
 
-- Change
+- Reading
 
-- Delete
+- Writing
 
-#### And three commands for interpretting:
+- Changing
+  
+  and
 
-- #line
+- Deleting
 
-<img title="" src="line.gif" alt="" width="521">
 
-- #slash
 
-<img src="slash.gif" title="" alt="" width="521">
+#### In your notes you can use these commands:
 
-- #endl
+- ###### *#color [args] (ex: color 4f)*
+  
+  Changes the color of the terminal. If no arguments given it will display the available colors.
 
-# Why did you made such a thing
+- ###### *#pause*
+  
+  Pauses the writing until a key press. (Can be used for multiple color sections or paging the text.)
+  
+  ###### *#new*
+  
+  Prints blank line. (Blank lines In the note files are not read. So this command must be used for printing those lines.)
+
+- ###### *#line*
+  
+  Prints "-" to the end of line.
+
+- ###### *#slash*
+  
+  Prints "/" to the end of line.
+
+- ###### *#dots*
+  
+  Prints "." to the end of line.
+
+- ###### *#star*
+  
+  Prints "*" to the end of line.
+
+##### Note: Commands are case sensitive and must be aligned left.
+
+
+
+# WHY
 
 I had free time and was looking for a project then this happened. ;)
 
+# 
+
 # Warning!
 
-Until recently Windows 10 (which was the only one btw.) was supporting Utf-8 command ```CHCP 65001```. <u>But now it makes the program crash.</u> Because of this terminal only supports english.
+Do not uncomment `CHCP 65001`.  This line makes crash. Because of this issue program does not support Utf-8.
