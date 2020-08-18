@@ -2,9 +2,7 @@
 
 A text interpreter for windows command line ***cmd/powershell***.
 
-<img src="file:///home/fatih/Downloads/Showcase.gif" title="" alt="" width="971">
-
-
+![](/home/fatih/Git-Hub/cmd_note/Showcase.gif)
 
 # USAGE
 
@@ -19,8 +17,6 @@ A text interpreter for windows command line ***cmd/powershell***.
   and
 
 - Deleting
-
-
 
 #### In your notes you can use these commands:
 
@@ -53,8 +49,6 @@ A text interpreter for windows command line ***cmd/powershell***.
   Prints "*" to the end of line.
 
 ##### Note: Commands are case sensitive and must be aligned left.
-
-
 
 # WHY
 
