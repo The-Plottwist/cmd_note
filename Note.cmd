@@ -50,13 +50,14 @@ FOR /F "tokens=* USEBACKQ" %%Q IN (`DIR ^| FINDSTR /C:".xm"`)DO (
 	SET "_list=!_list:~36!"
 	ECHO [!_notenumber!] !_list!
 )
+ECHO:
 
 REM Skipping no notes
 IF !_index! EQU !_notenumber! (GOTO:THE_QUESTION)
 
 REM If no notes found
 CLS
-CHOICE /T 15 /C YN /D N /N /M "No notes found would you like to make a new one? (y/n)"
+CHOICE /T 35 /C YN /D N /N /M "No notes found would you like to make a new one? (y/n)"
 
 IF !ERRORLEVEL! EQU 1 (
 
@@ -82,6 +83,7 @@ IF !ERRORLEVEL! EQU 1 (
 	ECHO #slash>> !_file_name!.xm
 	ECHO #line>> !_file_name!.xm
 	ECHO #dots>> !_file_name!.xm
+	ECHO #star>> !_file_name!.xm
 	ECHO #color>> !_file_name!.xm
 	ECHO #pause>> !_file_name!.xm
 	ECHO #new>> !_file_name!.xm
@@ -148,12 +150,12 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 	REM Slash function 
 	SET "_command=!_text:~0,6!"
 	IF !_command! == #slash (
-		
+
 		FOR /L %%C IN (1, 1, !_column!) DO (
 		
 			<nul (SET /P "_any_variable= /")
 		)
-
+		
 		SET "_text=#!_text:~6!"
 	)
 	
@@ -163,7 +165,7 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 
 		FOR /L %%C IN (1, 1, !_column!) DO (
 		
-			<nul (SET /P "_any_variable= _")
+			<nul (SET /P "_any_variable= -")
 		)
 
 		SET "_text=#!_text:~5!"
@@ -183,12 +185,18 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 	REM Pause function
 	SET "_command=!_text:~0,6!"
 	IF !_command! == #pause (
-		
+	
 		SET "_text=#!_text:~6!"
+		
+		ECHO:
+		ECHO:
+		
 		PAUSE
+		
+		ECHO:
 	)
 	
-	REM Dot function
+	REM Dots function
 	SET "_command=!_text:~0,5!"
 	IF !_command! == #dots (
 
@@ -254,19 +262,20 @@ ECHO #new
 ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
 
-ECHO Available commands are: >> !_file_name!.xm
-ECHO: >> !_file_name!.xm
+ECHO Available commands are: >> !_newnote!.xm
+ECHO: >> !_newnote!.xm
 
-ECHO #slash>> !_file_name!.xm
-ECHO #line>> !_file_name!.xm
-ECHO #dots>> !_file_name!.xm
-ECHO #color>> !_file_name!.xm
-ECHO #pause>> !_file_name!.xm
-ECHO #new >> !_file_name!.xm
-ECHO: >> !_file_name!.xm
+ECHO #slash>> !_newnote!.xm
+ECHO #line>> !_newnote!.xm
+ECHO #dots>> !_newnote!.xm
+ECHO #star>> !_newnote!.xm
+ECHO #color>> !_newnote!.xm
+ECHO #pause>> !_newnote!.xm
+ECHO #new >> !_newnote!.xm
+ECHO: >> !_newnote!.xm
 
-ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side. >> !_file_name!.xm
-ECHO: >> !_file_name!.xm
+ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side. >> !_newnote!.xm
+ECHO: >> !_newnote!.xm
 
 NOTEPAD !_newnote!.xm
 PAUSE
@@ -282,6 +291,7 @@ ECHO:
 ECHO #slash
 ECHO #line
 ECHO #dots
+ECHO #star
 ECHO #color [args]
 ECHO #pause
 ECHO #new
