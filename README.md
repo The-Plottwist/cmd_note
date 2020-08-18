@@ -2,7 +2,7 @@
 
 A text interpreter for windows command line ***cmd/powershell***.
 
-![](/home/fatih/Git-Hub/cmd_note/Showcase.gif)
+![](Showcase.gif)
 
 # USAGE
 
