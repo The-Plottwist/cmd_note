@@ -65,34 +65,34 @@ IF !ERRORLEVEL! EQU 1 (
 	ECHO: >> !_file_name!.xm
 	
 	CLS
-	ECHO Please enter your notes.
+	ECHO Available commands are:
 	ECHO:
-	ECHO You can use #slash command for
-	ECHO //////...
+	ECHO #slash
+	ECHO #line
+	ECHO #dots
+	ECHO #color [args]
+	ECHO #pause
+	ECHO #new
 	ECHO:
-	ECHO #line command for
-	ECHO ______...
-	ECHO:
-	ECHO and #endl command for new line
-	ECHO:
-	ECHO Note: Commands must be aligned to the left side!
-	ECHO:
+	ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
 	
-	ECHO You can delete these lines. >> !_file_name!.xm
+	ECHO Available commands are: >> !_file_name!.xm
 	ECHO: >> !_file_name!.xm
-	ECHO You can use #slash command for >> !_file_name!.xm
-	ECHO //////... >> !_file_name!.xm
+	
+	ECHO #slash>> !_file_name!.xm
+	ECHO #line>> !_file_name!.xm
+	ECHO #dots>> !_file_name!.xm
+	ECHO #color>> !_file_name!.xm
+	ECHO #pause>> !_file_name!.xm
+	ECHO #new>> !_file_name!.xm
 	ECHO: >> !_file_name!.xm
-	ECHO #line command for >> !_file_name!.xm
-	ECHO ______... >> !_file_name!.xm
-	ECHO: >> !_file_name!.xm
-	ECHO and #endl command for new line >> !_file_name!.xm
-	ECHO: >> !_file_name!.xm
+	
 	ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side. >> !_file_name!.xm
 	ECHO: >> !_file_name!.xm
 
 	NOTEPAD !_file_name!.xm
 	PAUSE
+	
 ) ELSE (EXIT)
 
 :THE_QUESTION
@@ -132,7 +132,6 @@ REM Teleporting to the target destination
 GOTO:!_theanswer!
 
 :SUB_5
-
 DEL !_current_file!
 
 CLS
@@ -148,7 +147,6 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 	
 	REM Slash function 
 	SET "_command=!_text:~0,6!"
-
 	IF !_command! == #slash (
 		
 		FOR /L %%C IN (1, 1, !_column!) DO (
@@ -161,7 +159,6 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 	
 	REM Line function
 	SET "_command=!_text:~0,5!"
-
 	IF !_command! == #line (
 
 		FOR /L %%C IN (1, 1, !_column!) DO (
@@ -171,12 +168,55 @@ FOR /F "delims=↨" %%G IN (!_current_file!) DO (
 
 		SET "_text=#!_text:~5!"
 	)
+		
+	REM Color function
+	SET "_command=!_text:~0,6!"
+	IF !_command! == #color (
+
+		SET "_col_val=!_text:~-2!"
+		
+		COLOR !_col_val!
+		
+		SET "_text=#!_text:~9!"
+	)
+	
+	REM Pause function
+	SET "_command=!_text:~0,6!"
+	IF !_command! == #pause (
+		
+		SET "_text=#!_text:~6!"
+		PAUSE
+	)
+	
+	REM Dot function
+	SET "_command=!_text:~0,5!"
+	IF !_command! == #dots (
+
+		FOR /L %%C IN (1, 1, !_column!) DO (
+		
+			<nul (SET /P "_any_variable= .")
+		)
+
+		SET "_text=#!_text:~5!"
+	)
+	
+	REM Star function
+	SET "_command=!_text:~0,5!"
+	IF !_command! == #star (
+
+		FOR /L %%C IN (1, 1, !_column!) DO (
+		
+			<nul (SET /P "_any_variable= *")
+		)
+
+		SET "_text=#!_text:~5!"
+	)
 	
 	REM New line function
-	SET "_command=!_text:~0,5!"
-	IF !_command! == #endl (
+	SET "_command=!_text:~0,4!"
+	IF !_command! == #new (
 		
-		SET "_text=#!_text:~5!"
+		SET "_text=#!_text:~4!"
 		ECHO:
 	)
 	
@@ -203,29 +243,30 @@ IF !_namecheck! EQU ~0 (
 CLS
 COLOR 2f
 
-ECHO You can use #slash command for
-ECHO //////...
+ECHO Available commands are:
 ECHO:
-ECHO #line command for
-ECHO ______...
-ECHO:
-ECHO and #endl command for new line
+ECHO #slash
+ECHO #line
+ECHO #dots
+ECHO #color [args]
+ECHO #pause
+ECHO #new
 ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
-ECHO:
 
-ECHO You can delete these lines. >> !_newnote!.xm
-ECHO: >> !_newnote!.xm
-ECHO You can use #slash command for >> !_newnote!.xm
-ECHO //////... >> !_newnote!.xm
-ECHO: >> !_newnote!.xm
-ECHO #line command for >> !_newnote!.xm
-ECHO ______... >> !_newnote!.xm
-ECHO: >> !_newnote!.xm
-ECHO and #endl command for new line >> !_newnote!.xm
-ECHO: >> !_newnote!.xm
-ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side. >> !_newnote!.xm
-ECHO: >> !_newnote!.xm
+ECHO Available commands are: >> !_file_name!.xm
+ECHO: >> !_file_name!.xm
+
+ECHO #slash>> !_file_name!.xm
+ECHO #line>> !_file_name!.xm
+ECHO #dots>> !_file_name!.xm
+ECHO #color>> !_file_name!.xm
+ECHO #pause>> !_file_name!.xm
+ECHO #new >> !_file_name!.xm
+ECHO: >> !_file_name!.xm
+
+ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side. >> !_file_name!.xm
+ECHO: >> !_file_name!.xm
 
 NOTEPAD !_newnote!.xm
 PAUSE
@@ -236,16 +277,16 @@ GOTO:LISTING
 CLS
 COLOR 2f
 
-ECHO You can use #slash command for
-ECHO //////...
+ECHO Available commands are:
 ECHO:
-ECHO #line command for
-ECHO ______...
-ECHO:
-ECHO and #endl command for new line
+ECHO #slash
+ECHO #line
+ECHO #dots
+ECHO #color [args]
+ECHO #pause
+ECHO #new
 ECHO:
 ECHO Note: Commands are CASE SENSITIVE and must be aligned to the left side.
-ECHO:
 
 NOTEPAD !_current_file!
 PAUSE
