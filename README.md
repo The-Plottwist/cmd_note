@@ -1,61 +1,51 @@
-# What is it
+# CMD_NOTE
 
 A text interpreter for windows command line ***cmd/powershell***.
 
+
+
 ![](Showcase.gif)
 
-# USAGE
+# Usage
 
-#### There are four options for file operation:
+After making your first note a notepad will open. You can type the below commands **(one per line with no other writing)**.
 
-- Reading
+# Commands
 
-- Writing
-
-- Changing
-  
-  and
-
-- Deleting
-
-#### In your notes you can use these commands:
+###### (Case sensitive and must be aligned left.)
 
 - ###### *#color [args] (ex: color 4f)*
   
-  Changes the color of the terminal. If no arguments given it will display the available colors.
+  - Changes the color of the terminal.
+  
+  - If no arguments given it will display the available colors.
 
 - ###### *#pause*
   
-  Pauses the writing until a key press. (Can be used for multiple color sections or paging the text.)
+  - Pauses the writing until a key press.
   
-  ###### *#new*
+  - Can be used for multiple color sections or paging the text.
+
+- ###### *#new*
   
-  Prints blank line. (Blank lines In the note files are not read. So this command must be used for printing those lines.)
+  - Prints blank line. 
 
 - ###### *#line*
   
-  Prints "-" to the end of line.
+  - Prints "-" to the end of line.
 
 - ###### *#slash*
   
-  Prints "/" to the end of line.
+  - Prints "/" to the end of line.
 
 - ###### *#dots*
   
-  Prints "." to the end of line.
+  - Prints "." to the end of line.
 
 - ###### *#star*
   
-  Prints "*" to the end of line.
-
-##### Note: Commands are case sensitive and must be aligned left.
-
-# WHY
-
-I had free time and was looking for a project then this happened. ;)
-
-# 
+  - Prints "*" to the end of line.
 
 # Warning!
 
-Do not uncomment `CHCP 65001`.  This line makes crash. Because of this issue program does not support Utf-8.
+Do not uncomment "UTF-8" `CHCP 65001`.  This line makes crash.
