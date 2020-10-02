@@ -1,5 +1,3 @@
-:: BISMILLAH
-
 @ECHO OFF
 
 SETLOCAL EnableDelayedExpansion
