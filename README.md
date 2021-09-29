@@ -14,7 +14,7 @@ After making your first note a notepad will open. You can type the below command
 
 ###### (Case sensitive and must be aligned left.)
 
-- ###### *#color [args] (ex: color 4f)*
+- ###### *#color [args] (e.g. color 4f)*
   
   - Changes the color of the terminal.
   
@@ -46,6 +46,6 @@ After making your first note a notepad will open. You can type the below command
   
   - Prints "*" to the end of line.
 
-# Warning!
+## Warning!
 
-Do not uncomment "UTF-8" `CHCP 65001`.  This line makes crash.
+Do not uncomment "UTF-8" `CHCP 65001`.  This line causes crash.
